@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/deebloo/rxjs-worker-operators/issues"
   },
-  "homepage": "https://github.com/deebloo/rxjs-worker-operators#readme"
+  "homepage": "https://github.com/deebloo/rxjs-worker-operators#readme",
+  "peerDependencies": {
+    "rxjs": "^5.0.0-beta.9"
+  }
 }

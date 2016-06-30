@@ -1,13 +1,26 @@
-export function createWorker(fn) {
-  var blob = new Blob(
-    [
-      'self.cb = ', fn, ';',
-      'self.onmessage = function (e) { self.postMessage(self.cb(e.data)) }'
-    ],
-    { type: 'text/javascript' }
-  );
+export class InlineWorker extends Worker {
+  constructor(fn) {
+    var blob: Blob = new Blob(
+      [
+        'self.cb = ', fn, ';',
+        'self.onmessage = function (e) { self.postMessage(self.cb(e.data)) }'
+      ],
+      { type: 'text/javascript' }
+    );
 
-  var url = URL.createObjectURL(blob);
+    super(URL.createObjectURL(blob));
+  }
 
-  return new Worker(url);
+  success(fn): void {
+    this.onmessage = fn;
+  }
+
+  error(fn): void {
+    this.onerror = fn;
+  }
+}
+
+// creates an inline web worker
+export function createWorker(fn: Function): Worker {
+  return new InlineWorker(fn);
 }
