@@ -1,0 +1,19 @@
+{
+  "name": "rxjs-worker-operators",
+  "version": "1.0.0",
+  "description": "Standard rxjs operators build to run in web workers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deebloo/rxjs-worker-operators.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deebloo/rxjs-worker-operators/issues"
+  },
+  "homepage": "https://github.com/deebloo/rxjs-worker-operators#readme"
+}
