@@ -1,18 +1,16 @@
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { createWorker } from '../utils'
+import { createWorker, InlineWorker, liftObservable } from '../utils'
 
-export class MapWorkerObservable extends Observable<any> {
+// only send back the data if it meets the expected criteria
+export class FilterWorkerObservable extends Observable<any> {
   lift(operator) {
-    const observable = new MapWorkerObservable();
-    observable.source = this;
-    observable.operator = operator;
-    return observable;
+    return liftObservable(FilterWorkerObservable, operator);
   }
 
   mapWorker(cb: Function) {
     const subject: Subject<any> = new Subject();
-    const worker = createWorker(cb);
+    const worker: InlineWorker = createWorker(cb);
     let data;
 
     worker.onmessage = e => {

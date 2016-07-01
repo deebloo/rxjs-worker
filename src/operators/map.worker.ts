@@ -1,22 +1,20 @@
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { createWorker } from '../utils'
+import { createWorker, InlineWorker, liftObservable } from '../utils'
 
 export class MapWorkerObservable extends Observable<any> {
-  lift(operator) {
-    const observable = new MapWorkerObservable();
-    observable.source = this;
-    observable.operator = operator;
-    return observable;
+  lift(operator): Observable<any> {
+    return liftObservable(MapWorkerObservable, operator);
   }
 
-  mapWorker(cb: Function) {
+  mapWorker(cb: Function): Subject<any> {
     const subject: Subject<any> = new Subject();
-    const worker = createWorker(cb);
+    const worker: InlineWorker = createWorker(cb);
 
     worker.onmessage = e => subject.next(e.data);
+    worker.onerror = err => subject.error(err);
 
-    this.subscribe(value => worker.postMessage(value));
+    this.subscribe(value => worker.run(value));
 
     return subject;
   }
