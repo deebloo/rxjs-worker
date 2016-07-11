@@ -10,8 +10,8 @@ RXJS extensions for adding web worker functionality via operators and observable
 
 Observable
   .from(['Hello World'])
-  .mapWorker(string => {
-    return string + ', I am from a worker.';
+  .mapWorker(strng => {
+    return strng + ', I am from a worker.';
   })
   .subscribe(res => {
     console.log(res); // Hello World, I am from a worker
@@ -23,8 +23,8 @@ Observable
 
 Observable
   .from(['Hello World'])
-  .mapWorker(string => {
-    return string === 'Hello World';
+  .mapWorker(strng => {
+    return strng === 'Hello World';
   })
   .subscribe(res => {
     console.log(res); // Hello World
