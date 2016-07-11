@@ -36,7 +36,7 @@ Observable
 ```TS
 Observable
   .from(['Hello World'])
-  .mapWorker(strng => {
+  .filterWorker(strng => {
     return strng === 'Hello World';
   })
   .subscribe(res => {
