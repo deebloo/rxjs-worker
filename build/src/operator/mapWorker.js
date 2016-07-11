@@ -1,8 +1,8 @@
 import { Subject } from 'rxjs/Subject';
-import { createWorker } from '../utils';
+import { createStaticWorker } from '../utils';
 export function mapWorker(cb) {
     const subject = new Subject();
-    const worker = createWorker(cb);
+    const worker = createStaticWorker(cb);
     worker.onmessage = e => subject.next(e.data);
     worker.onerror = err => subject.error(err);
     this.subscribe(value => worker.postMessage(value));

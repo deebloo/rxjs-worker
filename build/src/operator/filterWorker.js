@@ -1,8 +1,8 @@
 import { Subject } from 'rxjs/Subject';
-import { createWorker } from '../utils';
+import { createStaticWorker } from '../utils';
 export function filterWorker(cb) {
     const subject = new Subject();
-    const worker = createWorker(cb);
+    const worker = createStaticWorker(cb);
     let data;
     worker.onmessage = e => {
         if (data && e.data) {
