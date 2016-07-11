@@ -45,7 +45,7 @@ module.exports = function (config) {
       }
     },
 
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
     reporters: ['progress', 'coverage', 'karma-remap-istanbul'],
 
