@@ -1,40 +1,32 @@
-# redux-worker [![CircleCI](https://circleci.com/gh/deebloo/redux-worker.svg?style=svg)](https://circleci.com/gh/deebloo/redux-worker)
+# rxjs-worker
 
-```
-npm i --save redux-web-worker
-```
+RXJS extensions for adding web worker functionality via operators and observables
 
-Redux implementation in a web worker (experiment).
-The entire state is kept in a separate thread. (this also gives the added benefit of immutable objects)
 
+## Operators
+
+### mapWorker
 ```TS
-import { createStore } from 'redux-web-worker/core';
-// Or if using bundle.
-// var createStore = Rw.createStore;
 
-// the reduces is run in a new thread
-var store = createStore((state, action) => {
-  switch(action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-    default:
-      return state;
-  }
-}, 0);
+Observable
+  .from(['Hello World'])
+  .mapWorker(string => {
+    return string + ', I am from a worker.';
+  })
+  .subscribe(res => {
+    console.log(res); // Hello World, I am from a worker
+  });
+```
 
-// get state has to be async since the state is managed is a separate thread
-store.getState(state => {
-  console.log(state) // 0
-});
+### filterWorker
+```TS
 
-// subscribe to the store for changes.
-// the web worker acts as the dispatcher with onmessage and postMessage
-store.subscribe(state => {
-  console.log(state);
-});
-
-// standard redux style dispatch
-store.dispatch({ type: 'INCREMENT' });
+Observable
+  .from(['Hello World'])
+  .mapWorker(string => {
+    return string === 'Hello World';
+  })
+  .subscribe(res => {
+    console.log(res); // Hello World
+  });
 ```
