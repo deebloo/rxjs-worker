@@ -4,7 +4,7 @@ var env = process.env.NODE_ENV;
 
 var output = {
   libraryTarget: 'var',
-  library: 'Rw',
+  library: 'RxWorker',
   filename: 'bundles/bundle.js'
 };
 
