@@ -22,6 +22,10 @@ if (env === 'prod' || env === 'production') {
 module.exports = {
   entry: './src',
   output: output,
+  externals: {
+    'rxjs/Observable': 'rxjs/Observable',
+    'rxjs/Subject': 'rxjs/Subject'
+  },
   resolve: {
     extensions: ['', '.ts', '.js']
   },
