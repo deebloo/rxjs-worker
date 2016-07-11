@@ -1,11 +1,9 @@
 import '../src/add/operator/mapWorker';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/map';
 
 import { Observable } from 'rxjs/Observable';
 
-describe('Create Store', () => {
-  it('do stuff', done => {
+describe('Operator: Map', () => {
+  it('Should return the concatted string', done => {
     Observable
       .from(['Hello World: '])
       .mapWorker(function (item: number) {
