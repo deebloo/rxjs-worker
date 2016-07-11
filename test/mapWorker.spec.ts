@@ -6,20 +6,15 @@ import { Observable } from 'rxjs/Observable';
 
 describe('Create Store', () => {
   it('do stuff', done => {
-    var foo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    
-    var observable = Observable.from(foo);
-
-    observable
+    Observable
+      .from(['Hello World: '])
       .mapWorker(function (item: number) {
-        return item + 1;
+        return item + 'I am from a worker.';
       })
       .subscribe(function (val) {
-        console.log('Hell0', val);
-      }, function (err) {
-        console.log(err);
-      }, function () {
-        console.log('complete')
+        expect(val).toBe('Hello World: I am from a worker.');
+
+        done();
       });
   });
 });
