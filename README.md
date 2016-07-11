@@ -1,4 +1,4 @@
-# rxjs-worker
+# rxjs-worker [![CircleCI](https://circleci.com/gh/deebloo/rxjs-worker.svg?style=svg)](https://circleci.com/gh/deebloo/rxjs-worker)
 
 RXJS extensions for adding web worker functionality via operators and observables
 
