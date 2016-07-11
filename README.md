@@ -8,7 +8,7 @@ RXJS extensions for adding web worker functionality via operators and observable
 ```TS
   Observable
     .fromWorker(() => {
-      return 'Hello World';
+      self.postMessage('Hello World');
     })
     .map(val => {
       return val + ': I am an observable.'
