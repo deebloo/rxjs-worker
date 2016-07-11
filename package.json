@@ -7,7 +7,7 @@
     "build": "npm run es2015",
     "global-min": "NODE_ENV=prod webpack",
     "global-dev": "NODE_ENV=dev webpack",
-    "es2015": "tsc --outDir build/ --target ES2015 --module ES2015",
+    "es2015": "tsc --outDir build/ --target ES2015 --module ES2015 --declaration",
     "release": "npm run build && npm publish",
     "test": "karma start",
     "postinstall": "typings install"
