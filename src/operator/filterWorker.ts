@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { createWorker } from '../utils'
+import { createStaticWorker } from '../utils'
 
 export function filterWorker(cb: Function) {
   const subject: Subject<any> = new Subject();
-  const worker: Worker = createWorker(cb);
+  const worker: Worker = createStaticWorker(cb);
   let data;
 
   worker.onmessage = e => {

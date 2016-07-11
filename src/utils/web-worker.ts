@@ -1,15 +1,11 @@
 // creates an inline web worker
-export function createWorker(fn: Function): Worker {
-  const blob = new Blob(
-    [
-      'self.cb = ', fn.toString(), ';',
-      'self.onmessage = function (e) { self.postMessage(self.cb(e.data)) }'
-    ], {
-      type: 'text/javascript'
-    }
-  );
+export function createWorker(worker: Function | string): Worker {
+  if (typeof worker === 'string') {
+    return new Worker(worker);
+  } else {
+    const blob = new Blob(['self.onmessage = ', worker.toString()], { type: 'text/javascript' });
+    const url = URL.createObjectURL(blob);
 
-  const url = URL.createObjectURL(blob);
-  
-  return new Worker(url);
+    return new Worker(url);
+  }
 }

@@ -2,16 +2,19 @@ import '../src/add/observable/fromWorker';
 
 import { Observable } from 'rxjs/Observable';
 
-describe('Operator: Map', () => {
+describe('Observable: fromWorker', () => {
   it('Should return the concatted string', done => {
     Observable
       .fromWorker(function () {
-        return 'Hello World';
+        this.postMessage('Hello World');
+      })
+      .map(function (val) {
+        return val + ': I am an observable.'
       })
       .subscribe(function (val) {
-        console.log(val);
+        expect(val).toBe('Hello World: I am an observable.')
 
         done();
-      })
+      });
   });
 });
