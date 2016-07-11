@@ -2,6 +2,21 @@
 
 RXJS extensions for adding web worker functionality via operators and observables
 
+## Observables
+
+### observable.from()
+```
+  Observable
+    .fromWorker(() => {
+      return 'Hello World';
+    })
+    .map(val => {
+      return val + ': I am an observable.'
+    })
+    .subscribe(val => {
+      console.log(val); // Hello World: I am an observable.
+    });
+```
 
 ## Operators
 
