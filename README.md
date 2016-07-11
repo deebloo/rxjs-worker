@@ -5,7 +5,7 @@ RXJS extensions for adding web worker functionality via operators and observable
 ## Observables
 
 ### observable.from()
-```
+```TS
   Observable
     .fromWorker(() => {
       return 'Hello World';
@@ -22,7 +22,6 @@ RXJS extensions for adding web worker functionality via operators and observable
 
 ### observable.mapWorker()
 ```TS
-
 Observable
   .from(['Hello World'])
   .mapWorker(strng => {
@@ -35,7 +34,6 @@ Observable
 
 ### observable.filterWorker()
 ```TS
-
 Observable
   .from(['Hello World'])
   .mapWorker(strng => {
