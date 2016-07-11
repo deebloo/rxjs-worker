@@ -5,7 +5,7 @@ RXJS extensions for adding web worker functionality via operators and observable
 
 ## Operators
 
-### mapWorker
+### observable.mapWorker()
 ```TS
 
 Observable
@@ -18,7 +18,7 @@ Observable
   });
 ```
 
-### filterWorker
+### observable.filterWorker()
 ```TS
 
 Observable
