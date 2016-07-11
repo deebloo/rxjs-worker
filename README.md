@@ -4,7 +4,7 @@ RXJS extensions for adding web worker functionality via operators and observable
 
 ## Observables
 
-### observable.from()
+### observable.fromWorker()
 ```TS
   Observable
     .fromWorker(() => {
