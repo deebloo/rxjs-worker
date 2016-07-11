@@ -1,0 +1,2 @@
+// tests
+import './mapWorker.spec';
