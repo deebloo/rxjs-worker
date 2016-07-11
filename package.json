@@ -19,7 +19,7 @@
   ],
   "files": [
     "build/src",
-    "bundles"
+    "build/bundles"
   ],
   "repository": {
     "type": "git",
