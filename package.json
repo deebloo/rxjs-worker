@@ -14,12 +14,11 @@
   },
   "keywords": [
     "web workers",
-    "redux",
-    "state managment"
+    "rxjs",
+    "observables"
   ],
   "files": [
-    "build/src",
-    "bundles/"
+    "build/"
   ],
   "repository": {
     "type": "git",
