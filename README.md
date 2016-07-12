@@ -5,6 +5,7 @@ RXJS extensions for adding web worker functionality via operators and observable
 ## Observables
 
 ### observable.fromWorker()
+Create an observable from a webworker, path, or function
 ```TS
 // web worker
 const myWorker = new Worker('path/to/web-worker.js');
