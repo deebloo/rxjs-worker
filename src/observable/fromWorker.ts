@@ -1,22 +1,27 @@
-import { Observable, ObservableInput } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Scheduler } from 'rxjs/Scheduler';
 
 import { createWorker } from '../utils';
 
 export class WorkerObservable extends Observable<any> {
-  constructor(private ish: ObservableInput<any>, private scheduler: Scheduler) {
-    super(null);
-  }
-
-  static create(fn: Function) {
+  static create(webWorker: Function | Worker | string) {
     const subject: Subject<any> = new Subject();
-    let worker: Worker;
 
-    try {
-      worker = createWorker(fn);
-    } catch (err) {
-      subject.error(err);
+    let type: string = typeof webWorker;
+    type = type.toLowerCase();
+
+    let worker;
+
+    if (webWorker instanceof Worker) {
+      worker = webWorker;
+    } else if (type === 'function' || type === 'string') {
+      try {
+        worker = createWorker(<string | Function>webWorker);
+      } catch (err) {
+        subject.error(err);
+      }
+    } else {
+      subject.error('Must be a Web Worker, a path to a web worker, or a function');
     }
 
     worker.onmessage = e => subject.next(e.data);
