@@ -1,7 +1,7 @@
-import '../src/add/observable/fromWorker';
+import '../../src/add/observable/fromWorker';
 
 import { Observable } from 'rxjs/Observable';
-import { createWorker } from '../src/utils';
+import { createWorker } from '../../src/utils';
 
 describe('Observable: fromWorker', () => {
   it('Should accept a function and return the concatted string', done => {

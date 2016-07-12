@@ -2,6 +2,6 @@ import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/map';
 
 // tests
-import './mapWorker.spec';
-import './filterWorker.spec';
-import './fromWorker.spec';
+import './operator/mapWorker.spec';
+import './operator/filterWorker.spec';
+import './observable/fromWorker.spec';

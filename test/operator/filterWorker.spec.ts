@@ -1,4 +1,4 @@
-import '../src/add/operator/filterWorker';
+import '../../src/add/operator/filterWorker';
 
 import { Observable } from 'rxjs/Observable';
 

@@ -1,4 +1,4 @@
-import '../src/add/operator/mapWorker';
+import '../../src/add/operator/mapWorker';
 
 import { Observable } from 'rxjs/Observable';
 
