@@ -15,7 +15,7 @@ const observable1 = Observable.fromWorker(() => {
 const observable2 = Observable.fromWorker('path/to/web-worker.js');
 
 // web worker
-conster myWorker = new Worker('path/to/web-worker.js');
+const myWorker = new Worker('path/to/web-worker.js');
 const observable3 = Observable.fromWorker(myWorker);
 ```
 
