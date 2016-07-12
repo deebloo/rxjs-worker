@@ -8,15 +8,15 @@ RXJS extensions for adding web worker functionality via operators and observable
 ```TS
 // web worker
 const myWorker = new Worker('path/to/web-worker.js');
-const observable3 = Observable.fromWorker(myWorker);
+const observable1 = Observable.fromWorker(myWorker);
 
 // function
-const observable1 = Observable.fromWorker(() => {
+const observable2 = Observable.fromWorker(() => {
   self.postMessage('Hello World');
 });
 
 // string
-const observable2 = Observable.fromWorker('path/to/web-worker.js');
+const observable3 = Observable.fromWorker('path/to/web-worker.js');
 ```
 
 ## Operators
