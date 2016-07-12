@@ -5,7 +5,9 @@ RXJS extensions for adding web worker functionality via operators and observable
 ## Observables
 
 ### observable.fromWorker()
+
 Create an observable from a webworker, path, or function
+
 ```TS
 // web worker
 const myWorker = new Worker('path/to/web-worker.js');
@@ -23,6 +25,9 @@ const observable3 = Observable.fromWorker('path/to/web-worker.js');
 ## Operators
 
 ### observable.mapWorker()
+
+simple map function that runs its functor in a web worker
+
 ```TS
 Observable
   .from(['Hello World'])
@@ -35,6 +40,9 @@ Observable
 ```
 
 ### observable.filterWorker()
+
+returns either the result or null
+
 ```TS
 Observable
   .from(['Hello World'])
