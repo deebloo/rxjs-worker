@@ -11,6 +11,7 @@
     "forkChecker": true
   },
   "exclude": [
+    "build",
     "node_modules"
   ]
 }

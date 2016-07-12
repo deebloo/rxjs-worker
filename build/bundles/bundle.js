@@ -74,39 +74,33 @@ var RxWorker =
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var Observable_1 = __webpack_require__(2);
 	var Subject_1 = __webpack_require__(4);
 	var utils_1 = __webpack_require__(5);
-	var WorkerObservable = (function (_super) {
-	    __extends(WorkerObservable, _super);
-	    function WorkerObservable(ish, scheduler) {
-	        _super.call(this, null);
-	        this.ish = ish;
-	        this.scheduler = scheduler;
+	function fromWorker(webWorker) {
+	    var subject = new Subject_1.Subject();
+	    var type = typeof webWorker;
+	    type = type.toLowerCase();
+	    var worker;
+	    if (webWorker instanceof Worker) {
+	        worker = webWorker;
 	    }
-	    WorkerObservable.create = function (fn) {
-	        var subject = new Subject_1.Subject();
-	        var worker;
+	    else if (type === 'function' || type === 'string') {
 	        try {
-	            worker = utils_1.createWorker(fn);
+	            worker = utils_1.createWorker(webWorker);
 	        }
 	        catch (err) {
 	            subject.error(err);
 	        }
-	        worker.onmessage = function (e) { return subject.next(e.data); };
-	        worker.onerror = function (err) { return subject.error(err); };
-	        worker.postMessage({});
-	        return subject;
-	    };
-	    return WorkerObservable;
-	}(Observable_1.Observable));
-	exports.WorkerObservable = WorkerObservable;
-	exports.fromWorker = WorkerObservable.create;
+	    }
+	    else {
+	        subject.error('Must be a Web Worker, a path to a web worker, or a function');
+	    }
+	    worker.onmessage = function (e) { return subject.next(e.data); };
+	    worker.onerror = function (err) { return subject.error(err); };
+	    worker.postMessage({});
+	    return subject;
+	}
+	exports.fromWorker = fromWorker;
 
 
 /***/ },
