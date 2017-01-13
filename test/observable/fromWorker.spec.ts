@@ -9,10 +9,8 @@ describe('Observable: fromWorker', () => {
       .fromWorker(function () {
         this.postMessage('Hello World');
       })
-      .map(function (val) {
-        return val + ': I am an observable.'
-      })
-      .subscribe(function (val) {
+      .map(val => val + ': I am an observable.')
+      .subscribe(val => {
         expect(val).toBe('Hello World: I am an observable.')
 
         done();

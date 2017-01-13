@@ -5,7 +5,7 @@ import { createStaticWorker } from '../utils';
 // map of existing workers so we don't keep creating new ones
 let workers = {};
 
-export function mapWorker(cb: Function): Subject<any> {
+export function workerMap(cb: Function): Subject<any> {
   const subject: Subject<any> = new Subject();
 
   let workerString = cb.toString();

@@ -29,7 +29,6 @@ module.exports = function (config) {
           {
             test: /\.ts$/,
             loader: 'awesome-typescript-loader',
-            exclude: /node_modules/,
             query: {
               tsconfig: 'tsconfig.test.json'
             }

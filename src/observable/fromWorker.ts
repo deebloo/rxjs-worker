@@ -6,7 +6,7 @@ import { createWorker } from '../utils';
  * or create a new worker from a function or a path
  */
 export function fromWorker(webWorker: Function | Worker | string) {
-  const subject: Subject<any> = new Subject();
+  const subject = new Subject();
   let worker;
 
   if (webWorker instanceof Worker) {
