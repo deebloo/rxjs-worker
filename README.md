@@ -23,7 +23,7 @@ const observable3 = Observable.fromWorker('path/to/web-worker.js');
 ## Operators
 
 ### observable.mapWorker()
-simple map function that runs its functor in a web worker
+simple map function that runs in a web worker
 ```TS
 Observable
   .from(['Hello World'])
